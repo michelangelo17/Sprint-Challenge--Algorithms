@@ -118,17 +118,6 @@ class SortingRobot:
                 self.move_left()
 
 
-def bubble_sort(arr):
-    while True:
-        swapcount = 0
-        for i in range(0, len(arr) - 1):
-            if arr[i] > arr[i + 1]:
-                arr[i], arr[i + 1] = arr[i + 1], arr[i]
-                swapcount += 1
-        if swapcount == 0:
-            return arr
-
-
 if __name__ == "__main__":
     # Test our your implementation from the command line
     # with `python robot_sort.py`
