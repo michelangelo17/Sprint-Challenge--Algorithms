@@ -98,23 +98,35 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        self.swap_item()
-        self.move_right()
         self.set_light_on()
         while self.light_is_on():
             self.set_light_off()
             while self.can_move_right():
                 self.swap_item()
                 self.move_right()
-                if self.compare_item() < 1:
+                if self.compare_item() == 1:
                     self.swap_item()
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
                     self.set_light_on()
                 else:
                     self.move_left()
                     self.swap_item()
                     self.move_right()
-            if self.compare_item() == 1:
-                self.swap_item()
+            while self.can_move_left():
+                self.move_left()
+
+
+def bubble_sort(arr):
+    while True:
+        swapcount = 0
+        for i in range(0, len(arr) - 1):
+            if arr[i] > arr[i + 1]:
+                arr[i], arr[i + 1] = arr[i + 1], arr[i]
+                swapcount += 1
+        if swapcount == 0:
+            return arr
 
 
 if __name__ == "__main__":
